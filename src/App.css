@@ -3,8 +3,9 @@
     max-width: 1024px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-  align-content: center;
+    align-items: center;
+
+
 }
 
 .App {
@@ -19,6 +20,8 @@
     border: 5px solid blue;
     color: black;
     background-color: darkgrey;
+    justify-self: center;
+
 
 }
 
@@ -31,3 +34,11 @@
     gap: 10px;
 }
 
+.setters{
+    justify-self: center;
+}
+
+.error{
+    color: white;
+background-color:indianred;
+}

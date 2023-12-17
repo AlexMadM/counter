@@ -7,12 +7,16 @@ function App() {
 
     const [count, setCount] = useState(0)
     const [maxValue, setMaxValue] = useState(5)
+const [reset,setReset]= useState(true)
 
-
+const resetsCounter=()=>{
+        setReset(!reset)
+}
 
     const LocalStorage = (start: number, max: number) => {
         setCount(start)
         setMaxValue(max)
+        setReset(!reset)
     }
 
 
@@ -31,17 +35,21 @@ function App() {
 
     return (
         <div className='input'>
-            <SetCounter LocalStorage={LocalStorage} />
-            <div className="App">
 
-                <span className={count >= maxValue ? 'red' : ''}>{count}</span>
-                <div className='btn'>
-                    <Button onClick={IncrementHandler} disabled={maxCount} name={'inc'}/>
-                    <Button onClick={ResetHandler} disabled={countNon} name={'reset'}/>
-                </div>
+            {reset ?
+                <SetCounter  LocalStorage={LocalStorage}/>
+                : <div className="App">
+
+                <span className={count >= maxValue ? 'red' : ''}>
+             {count === maxValue ? 'Wrong' : count}</span>
+                    <div className='btn'>
+                        <Button onClick={IncrementHandler} disabled={maxCount} name={'inc'}/>
+                        <Button onClick={ResetHandler} disabled={countNon} name={'reset'}/>
+                        <Button onClick={resetsCounter} name={'reset'}/>
+                    </div>
 
 
-            </div>
+                </div>}
         </div>
 
     );

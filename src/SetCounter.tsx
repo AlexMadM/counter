@@ -8,6 +8,7 @@ type props ={
 const SetCounter = (props:props) => {
 
 
+
     const [start, setStart] = useState(0);
     const [max, setMax] = useState(0);
 
@@ -44,16 +45,16 @@ const SetCounter = (props:props) => {
 
 
     return (
-        <div>
+        <div className='setters'>
             <p>
 
                 <label>max value: </label>
-                <input list='value' onChange={maxValue} type="number" value={max}
+                <input  className={start < 0 || max < 0 || start===max || max<start ? 'error' : ''} list='value' onChange={maxValue} type="number" value={max}
                        step="1"/>
             </p>
             <p>
                 <label>start value: </label>
-                <input list='value' onChange={startValue} type="number" value={start}
+                <input className={start < 0 || max < 0 || start===max || max<start ? 'error' : ''} list='value' onChange={startValue} type="number" value={start}
                        step="1"/>
             </p>
 
