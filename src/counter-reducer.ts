@@ -1,10 +1,10 @@
 export type IncrementType = {
     type: 'INCREMENT',
 
-}
+};
 export type ResetHandlerType ={
   type:  'RESET'
-}
+};
 
 
 type ActionsType = IncrementType |ResetHandlerType
