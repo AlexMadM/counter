@@ -5,8 +5,8 @@ import SetCounter from "./SetCounter";
 
 function App() {
 
-    const [count, setCount] = useState(0)
-    const [maxValue, setMaxValue] = useState(5)
+    const [count, setCount] = useState(+0)
+    const [maxValue, setMaxValue] = useState(+5)
 const [reset,setReset]= useState(true)
 
 const resetsCounter=()=>{
@@ -21,7 +21,10 @@ const resetsCounter=()=>{
 
 
     const IncrementHandler = () => {
-        setCount(count + 1)
+        if(count < maxValue){
+            setCount(count + 1)
+        }
+
     }
 
 
