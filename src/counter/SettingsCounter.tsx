@@ -38,7 +38,8 @@ const SettingsCounter = (props:SetCountProps) => {
 
     return (
         <div className={style.counter}>
-            <div >
+            <div className={startValue>= maxValue ? style.error : ''}>
+
                 <TextField variant="outlined" type="number" label={'max-value'} value={maxValue}
                            onChange={maxValueInputChangeHandler}
 

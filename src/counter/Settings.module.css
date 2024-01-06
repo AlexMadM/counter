@@ -4,3 +4,12 @@
   gap: 10px;
   margin-bottom: 10px;
 }
+
+.error {
+  background-color: tomato;
+
+}
+
+.max {
+  background-color: tomato;
+}

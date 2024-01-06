@@ -8,3 +8,8 @@
   width: fit-content;
   background-color: #f9eaae;
 }
+
+.error{
+  color :red;
+  size: 30px;
+}

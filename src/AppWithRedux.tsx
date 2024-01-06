@@ -56,6 +56,7 @@ const count = useSelector<AppRootStateType,CountType>((state)=>state.counter);
                 : <div className="App">
 
                 <span className={count.count >= count.maxValue ? 'red' : ''}>
+
              {count.count === count.maxValue ? 'Wrong' : count.count}</span>
                     <div className='btn'>
                         <Button onClick={IncrementHandler} disabled={maxCount} name={'inc'}/>
