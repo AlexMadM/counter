@@ -11,10 +11,11 @@ const Buttons = (props: ButtonType) => {
 
 
     return (
-        <Button variant="contained" onClick={props.increment}
-                disabled={props.count.count >= props.count.maxValue }
-        >inc
-        </Button>
+        disabled
+        // <Button variant="contained" onClick={props.increment}
+        //         disabled={props.count.count >= props.count.maxValue }
+        // >inc
+        // </Button>
     );
 };
 

@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SettingsCounter from "./SettingsCounter";
 
 import Count from "./Count";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./store";
-import {CountType, incrementAC, resetHandlerAC, setHandlerAc} from "./counter-reducer";
+import {
+    CountType, incrementAC,
+
+    resetHandlerAC,
+    setHandlerAc,
+
+} from "./counter-reducer";
 import style from "./Counter.module.css";
 
 
@@ -13,12 +19,17 @@ const MyCounter = () => {
 
 
     const count = useSelector<AppRootStateType,CountType>((state)=>state.counter);
+
+
+
     const dispatch = useDispatch();
-
+    useEffect(()=>{
+        // dispatch(setValueFromLocalStorage())
+    },[])
     const IncrementHandler=()=>{
-        dispatch(incrementAC())
+      dispatch(incrementAC())
 
-    }
+     }
 
     const ResetHandler = () => {
         const action = resetHandlerAC()

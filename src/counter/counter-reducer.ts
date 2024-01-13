@@ -1,3 +1,6 @@
+import {Dispatch} from "redux";
+import {AppRootStateType} from "./store";
+
 export type IncrementType = {
     type: 'INCREMENT',
 
@@ -65,3 +68,17 @@ export type setFromLocalStorageType=ReturnType<typeof setFromLocalStorage>
 export const setFromLocalStorage=(count:number)=>({
 type:"SET-VALUE-FROM-LOCAL-STORAGE",count
 }as const)
+
+// export const incValuesTC=(count:number)=>(dispatch:Dispatch,getState:()=>AppRootStateType)=>{
+//     let value =getState().counter.count
+// localStorage.setItem('count',JSON.stringify(value+1))
+//     dispatch(incrementAC())
+// }
+//
+// export const setValueFromLocalStorage=()=>(dispatch:Dispatch)=>{
+//     let value=localStorage.getItem("count")
+//     if(value) {
+//         let newValue = JSON.parse(value)
+//       dispatch(setFromLocalStorage(newValue))
+//     }
+// }
