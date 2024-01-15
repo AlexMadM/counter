@@ -16,7 +16,7 @@ export type setHandlerType ={
 };
 
 
-type ActionsType = IncrementType |ResetHandlerType |setHandlerType | setFromLocalStorageType
+type ActionsType = IncrementType |ResetHandlerType |setHandlerType
 
 export type CountType = {
     count: number
@@ -41,8 +41,8 @@ export const counterReducer = (state = initialState, action: ActionsType):CountT
             return {...state,count:action.count,maxValue:action.maxValue}
 
         }
-        case "SET-VALUE-FROM-LOCAL-STORAGE":
-            return {...state,count:action.count}
+        // case "SET-VALUE-FROM-LOCAL-STORAGE":
+        //     return {...state,count:action.count}
         default: return state;
 
     }
@@ -63,11 +63,11 @@ export  const setHandlerAc=(maxValue:number,startValue:number):setHandlerType=>{
     return {type:'SET', maxValue, count:startValue }as const
 }
 
-export type setFromLocalStorageType=ReturnType<typeof setFromLocalStorage>
+// export type setFromLocalStorageType=ReturnType<typeof setFromLocalStorage>
 
-export const setFromLocalStorage=(count:number)=>({
-type:"SET-VALUE-FROM-LOCAL-STORAGE",count
-}as const)
+// export const setFromLocalStorage=(count:number)=>({
+// type:"SET-VALUE-FROM-LOCAL-STORAGE",count
+// }as const)
 
 // export const incValuesTC=(count:number)=>(dispatch:Dispatch,getState:()=>AppRootStateType)=>{
 //     let value =getState().counter.count
