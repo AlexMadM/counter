@@ -1,7 +1,7 @@
 import {counterReducer} from "./counter-reducer";
-import {applyMiddleware, combineReducers, createStore, legacy_createStore} from "redux";
+import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
 
-import thunkMiddleware, {thunk} from 'redux-thunk'
+import {thunk} from 'redux-thunk'
 import {loadState, saveState} from "./localStorage-utils";
 
 const rootReducer = combineReducers({

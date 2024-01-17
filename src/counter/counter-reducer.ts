@@ -1,5 +1,4 @@
-import {Dispatch} from "redux";
-import {AppRootStateType} from "./store";
+
 
 export type IncrementType = {
     type: 'INCREMENT',

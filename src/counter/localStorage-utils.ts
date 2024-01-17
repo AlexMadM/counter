@@ -17,6 +17,6 @@ export const saveState = (state:AppRootStateType) => {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('count', serializedState);
     } catch {
-        // ignore write errors
+
     }
 };
