@@ -1,8 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export type State = {
-    value: number
+export type States = {
+  maxValue:number
+    minValue:number
+    settings:boolean
+    value:number
 }
+
 
 const initialState = {
     value: 0 as number,
@@ -24,10 +28,14 @@ const slice = createSlice({
             state.settings = !action.payload.setting
         }, settings: (state, action: PayloadAction<{ minValue: number, maxValue: number }>) => {
             state.value = action.payload.minValue ;state.maxValue = action.payload.maxValue
+        },load:(state,action:PayloadAction<States>)=>{
+           return action.payload
+
+
         }
     }
 })
 
 
 export const click = slice.reducer
-export const {increment, decrement, setsCount, settings} = slice.actions
+export const {load,increment, decrement, setsCount, settings} = slice.actions

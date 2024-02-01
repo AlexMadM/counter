@@ -6,7 +6,7 @@ export const loadState = () => {
         if (serializedState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        return JSON.parse(serializedState).counter;
     } catch (err) {
         return undefined;
     }
@@ -20,3 +20,4 @@ export const saveState = (state:AppRootStateType) => {
 
     }
 };
+console.log(loadState())
