@@ -6,7 +6,10 @@ import reportWebVitals from './reportWebVitals';
 
 import {createTheme, ThemeProvider} from "@mui/material";
 import {green} from "@mui/material/colors";
-import App from "./App";
+
+import {Provider} from "react-redux";
+import {store} from "./app/store";
+import App from "./app/App";
 
 
 const theme = createTheme({
@@ -19,9 +22,12 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <ThemeProvider theme={theme}>
-        <App/>
-    </ThemeProvider>
+    <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <App/>
+        </ThemeProvider>
+    </Provider>
+
 
 
  );
