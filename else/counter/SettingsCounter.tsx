@@ -1,5 +1,5 @@
-import React, {ChangeEvent, useState} from 'react';
-import style from "./Settings.module.css";
+import {ChangeEvent, useState} from 'react';
+
 import {Button, TextField} from "@mui/material";
 import {CountType} from "./counter-reducer";
 
@@ -37,8 +37,8 @@ const SettingsCounter = (props:SetCountProps) => {
  }
 
     return (
-        <div className={style.counter}>
-            <div className={startValue>= maxValue ? style.error : ''}>
+        <div >
+            <div >
 
                 <TextField variant="outlined" type="number" label={'max-value'} value={maxValue}
                            onChange={maxValueInputChangeHandler}
@@ -49,7 +49,7 @@ const SettingsCounter = (props:SetCountProps) => {
                            onChange={startValueInputChangeHandler}/>
             </div>
 
-            <div className={style['button-box']}>
+            <div >
                 <Button variant="contained" onClick={setButtonHandler}
                         disabled={isChanged()}
                 >set</Button>

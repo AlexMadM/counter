@@ -1,8 +1,8 @@
-import React from 'react';
+
 import {Button} from "@mui/material";
 
 import {CountType} from "./counter-reducer";
-import style from "./Counter.module.css";
+
 
 
 
@@ -22,7 +22,7 @@ const Count = (props:CountProps) => {
 
     return (
         <div>
-           <span className={props.count.count >= props.count.maxValue ? style.error : ''}>{props.count.count}</span>
+           <span >{props.count.count}</span>
             <div>
                 <Button variant="contained" onClick={props.increment}
                         disabled={props.count.count >= props.count.maxValue }
