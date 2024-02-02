@@ -4,12 +4,13 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
-import {createTheme, ThemeProvider} from "@mui/material";
+import {Container, createTheme, ThemeProvider} from "@mui/material";
 import {green} from "@mui/material/colors";
-
+import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from "react-redux";
-import {store} from "./app/store";
+import {persistor, store} from "./app/store";
 import App from "./app/App";
+import {styleContainer} from "./features/styleBox";
 
 
 const theme = createTheme({
@@ -19,18 +20,15 @@ const theme = createTheme({
 });
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <App/>
+            <PersistGate loading={null} persistor={persistor}><Container sx={{ ...styleContainer}}> <App /></Container></PersistGate>
         </ThemeProvider>
     </Provider>
-
-
-
- );
+);
 //
 // // If you want to start measuring performance in your app, pass a function
 // // to log results (for example: reportWebVitals(console.log))

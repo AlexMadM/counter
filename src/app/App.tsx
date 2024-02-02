@@ -1,26 +1,32 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Counter from "../common/components/Counter";
 import SetCounter from "../common/components/SetCounter";
 import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch} from "./store";
-import {load, setsCount} from "../features/slice_counter";
+import {setsCount} from "../features/slice_counter";
 import s from './app.module.css'
-import {loadState} from "./localStorage-utils";
+import {Box, Container} from "@mui/material";
+
 const App = () => {
-    useEffect(() => {
-        dispatch(load(loadState()))
-        console.log(loadState())
-    }, []);
+    // useEffect(() => {
+    //     dispatch(load(loadState()))
+    //     console.log(loadState())
+    // }, []);
     const dispatch = useAppDispatch();
-    const   setting =useSelector<AppRootStateType,boolean>(state => state.counter.settings)
-    const sett=()=>{
+    const setting = useSelector<AppRootStateType, boolean>(state => state.counter.settings)
+    const sett = () => {
         dispatch(setsCount({setting}))
     }
-    return (
-        <div className={s.app}>
-            {setting ? <Counter setting={sett} /> : <SetCounter  setting={sett}/> }
+    return (<Container sx={{ display:'flex', justifyContent:'center',alignItems:'center' }}>
 
-        </div>
+                {setting ? <Counter setting={sett}/> : <SetCounter setting={sett}/>}
+
+
+    </Container>
+
+
+
+
     );
 };
 

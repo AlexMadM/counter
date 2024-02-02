@@ -1,16 +1,21 @@
 import React, {ChangeEvent, useState} from 'react';
-import Button from "./Button";
-import {TextField} from "@mui/material";
-import {settings} from "../../features/slice_counter";
-import {useAppDispatch} from "../../app/store";
+
+import {Box, TextField} from "@mui/material";
+import {settings, States} from "../../features/slice_counter";
+import {AppRootStateType, useAppDispatch} from "../../app/store";
+import {useSelector} from "react-redux";
+
+import Buttons from "./Buttons";
+import {style} from "../../features/styleBox";
 
 type Props = {
     setting: () => void
 }
 const SetCounter = (props: Props) => {
+    const sets = useSelector<AppRootStateType, States>(state => state.counter)
     const dispatch = useAppDispatch();
-    const [maxValue, setMaxValue] = useState(0)
-    const [minValue, setminValue] = useState(0);
+    const [maxValue, setMaxValue] = useState(sets.maxValue)
+    const [minValue, setminValue] = useState(sets.value);
     const maxValueInputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxValue(+e.currentTarget.value);
     }
@@ -24,15 +29,15 @@ const SetCounter = (props: Props) => {
             return true;
         }
     }
-const settingsCounter=()=>{
-        dispatch(settings({minValue,maxValue}))
-    props.setting()
-}
+    const settingsCounter = () => {
+        dispatch(settings({minValue, maxValue}))
+        props.setting()
+    }
 
     return (
-        <div>
+        <Box sx={{...style}}>
             <div>
-                <TextField variant="outlined" type="number" label={'max-value'} value={maxValue}
+                <TextField sx={{mr: '10px'}} variant="outlined" type="number" label={'max-value'} value={maxValue}
                            onChange={maxValueInputChangeHandler}
 
                 />
@@ -40,9 +45,11 @@ const settingsCounter=()=>{
 
                            onChange={startValueInputChangeHandler}/>
             </div>
+            <Box sx={{marginTop: '15px'}}>
+                <Buttons onClick={settingsCounter} disabled={isChanged()} name='set'/>
+            </Box>
 
-            <Button onClick={settingsCounter} disabled={isChanged()} name='set'/>
-        </div>
+        </Box>
     );
 };
 

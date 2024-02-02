@@ -2,22 +2,25 @@ import React from 'react';
 import {useSelector} from "react-redux";
 
 import {AppRootStateType, useAppDispatch} from "../../app/store";
-import Button from "./Button";
-import {decrement, increment, setsCount} from "../../features/slice_counter";
-type Props={
-    setting:()=>void
-}
-const Counter = (props:Props) => {
 
- const   value =useSelector<AppRootStateType,number>(state => state.counter.value)
-    const maxValue=useSelector<AppRootStateType,number>(state => state.counter.maxValue)
+import {decrement, increment} from "../../features/slice_counter";
+import Buttons from "./Buttons";
+import {Container, Typography} from "@mui/material";
+
+type Props = {
+    setting: () => void
+}
+const Counter = (props: Props) => {
+
+    const value = useSelector<AppRootStateType, number>(state => state.counter.value)
+    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.maxValue)
     const dispatch = useAppDispatch();
 
- const incrementHandler=()=>{
-     dispatch(increment())
- }
+    const incrementHandler = () => {
+        dispatch(increment())
+    }
 
-    const decrementHandler=()=>{
+    const decrementHandler = () => {
         dispatch(decrement())
     }
     const isChanged = () => {
@@ -28,13 +31,20 @@ const Counter = (props:Props) => {
 
 
     return (
-        <div >
-                    <span>{value}</span>
-            <Button onClick={incrementHandler} disabled={isChanged()} name='inc' />
-            <Button onClick={decrementHandler} disabled={value<=0} name='dec' />
-            <Button onClick={props.setting} name='set'/>
+        <Container  sx={{ display:'flex',flexDirection:'column' ,alignItems:'center' } } >
+            <Typography gutterBottom variant="h5" component="div">
+                {value}
+            </Typography>
 
-        </div>
+
+            <Container sx={{ display:'flex', justifyContent:'center',alignItems:'center',gap:'10px'} }>
+                <Buttons onClick={incrementHandler} disabled={isChanged()} name='inc'/>
+                <Buttons onClick={decrementHandler} disabled={value <= 0} name='dec'/>
+                <Buttons onClick={props.setting} name='set'/>
+            </Container>
+
+
+        </Container>
     );
 };
 
